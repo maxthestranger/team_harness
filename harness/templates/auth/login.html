@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% block title %}Log In{% endblock %} {% block content
+%}
+<main style="min-height: 100vh" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="card card-lg my-5">
+          <div class="card-body">
+            <h1 class="display-4 text-center">Login</h1>
+            <p>
+              Don't have an account yet?
+              <a href="{{ url_for('auth.register') }}">Sign up here</a>
+            </p>
+            <form method="POST">
+              <!-- Input Group -->
+              <div class="form-group">
+                <label for="inputGroupHoverLightEmail" class="input-label"
+                  >Email</label
+                >
+
+                <div
+                  class="input-group input-group-merge input-group-hover-light"
+                >
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    id="inputGroupHoverLightEmail"
+                    placeholder="name@example.com"
+                    required
+                  />
+                </div>
+              </div>
+              <!-- End Input Group -->
+
+              <!-- Input Group -->
+              <div class="form-group">
+                <label for="password" class="input-label">Password </label>
+
+                <div
+                  class="input-group input-group-merge input-group-hover-light"
+                >
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    id="password"
+                  />
+                </div>
+              </div>
+              <!-- End Input Group -->
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

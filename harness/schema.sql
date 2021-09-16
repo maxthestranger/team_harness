@@ -1,0 +1,46 @@
+DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS report;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS comment;
+
+-- CREATE TABLE role (
+--   id INTEGER PRIMARY KEY AUTOINCREMENT,
+--   role_name TEXT NOT NULL
+-- );
+
+CREATE TABLE user (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  email TEXT UNIQUE NOT NULL,
+  role TEXT NOT NULL,
+  full_name TEXT NOT NULL,
+  password TEXT NOT NULL
+  -- FOREIGN KEY (role_id) REFERENCES role (id)
+);
+
+CREATE TABLE category (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  category_name TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE report (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  user_two_id INTEGER NOT NULL,
+  category_id INTEGER NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  report_value TEXT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES user (id),
+  FOREIGN KEY (category_id) REFERENCES category (id),
+  FOREIGN KEY (user_two_id) REFERENCES user (id)
+);
+
+CREATE TABLE comment (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  report_id INTEGER NOT NULL,
+  user_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  comment TEXT NULL,
+  FOREIGN KEY (report_id) REFERENCES report (id),
+  FOREIGN KEY (user_id) REFERENCES user (id)
+);

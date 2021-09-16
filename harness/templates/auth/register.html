@@ -1,0 +1,103 @@
+{% extends 'base.html' %} {% block title %}Register{% endblock %} {% block
+content %}
+<main style="min-height: 100vh" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="card card-lg my-5">
+          <div class="card-body">
+            <h1 class="display-4 text-center">Register</h1>
+            <p>
+              Already has an account?
+              <a href="{{ url_for('auth.login') }}">Login</a>
+            </p>
+            <form method="POST">
+              <!-- Input Group -->
+              <div class="form-group">
+                <label for="department" class="input-label">Role</label>
+
+                <div
+                  class="input-group input-group-merge input-group-hover-light"
+                >
+                  <select
+                    id="department"
+                    class="custom-select"
+                    name="role"
+                    required
+                  >
+                    <option selected disabled>Register As:</option>
+                    <option value="1">Employee</option>
+                    <option value="2">Supervisor</option>
+                  </select>
+                </div>
+              </div>
+              <!-- End Input Group -->
+              <!-- Input Group -->
+              <div class="form-group">
+                <label for="register" class="input-label">Full name</label>
+
+                <div
+                  class="input-group input-group-merge input-group-hover-light"
+                >
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="full_name"
+                    id="register"
+                    placeholder="Mark Williams"
+                    required
+                  />
+                </div>
+              </div>
+              <!-- End Input Group -->
+
+              <!-- Input Group -->
+              <div class="form-group">
+                <label for="inputGroupHoverLightEmail" class="input-label"
+                  >Email</label
+                >
+
+                <div
+                  class="input-group input-group-merge input-group-hover-light"
+                >
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    id="inputGroupHoverLightEmail"
+                    placeholder="mark@example.com"
+                    required
+                  />
+                </div>
+              </div>
+              <!-- End Input Group -->
+
+              <!-- Input Group -->
+              <div class="form-group">
+                <label for="password" class="input-label">Password </label>
+
+                <div
+                  class="input-group input-group-merge input-group-hover-light"
+                >
+                  <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    id="password"
+                    required
+                  />
+                </div>
+              </div>
+              <!-- End Input Group -->
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block title %}Log In{% endblock %} {% block content
+%}
+
+<main style="min-height: 100vh" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 d-flex justify-content-center">
+        <a class="btn btn-primary" href="employee_report.html">View Reports</a>
+      </div>
+      <div class="col-lg-4">
+        <span class="card-title h5">Employee Name</span>
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="card card-lg my-5">
+          <div class="card-body">
+            <form method="POST">
+              <div class="form-group">
+                <label class="input-label" for="exampleFormControlTextarea1"
+                  >Choose Supervisor</label
+                >
+                <select class="custom-select">
+                  <option selected disabled>Supervisor Name</option>
+                  {% for supervisor in supervisors %}
+                  <option value="{{supervisor.role}}">
+                    {{supervisor.role}}
+                  </option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="input-label" for="exampleFormControlTextarea1"
+                  >Report</label
+                >
+                <textarea
+                  id="exampleFormControlTextarea1"
+                  class="form-control"
+                  placeholder="Write your report Here"
+                  rows="4"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                  Send to Supervisor
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
