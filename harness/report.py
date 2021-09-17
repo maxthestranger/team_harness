@@ -14,6 +14,7 @@ bp = Blueprint("report", __name__)
 
 
 @bp.route("/")
+@login_required
 def index():
     """Show all the reports, most recent first."""
     db = get_db()
@@ -26,6 +27,18 @@ def index():
         "SELECT * FROM user WHERE role LIKE '%supervisor%'"
     ).fetchall()
     return render_template("report/index.html", reports=reports, supervisors=supervisors)
+
+# @bp.route("/supervisor")
+# def supervisor():
+#     return render_template("report/sup_index.html")
+
+# @bp.route("/emp_list")
+# def emp_list():
+#     return render_template("report/emp_list.html")
+
+# @bp.route("/create")
+# def create():
+#     return render_template("report/create.html")
 
 
 def get_post(id, check_author=True):
